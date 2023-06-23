@@ -48,14 +48,57 @@
                     <view key="view" contentMode="scaleToFill" id="nup-BR-bue">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NWg-sU-FNx">
+                                <rect key="frame" x="0.0" y="103" width="393" height="327"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="NWg-sU-FNx" secondAttribute="height" multiplier="131:109" id="8Av-aE-5Bt"/>
+                                </constraints>
+                                <standardMapConfiguration key="preferredConfiguration"/>
+                            </mapView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="name" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fk1-di-L7y">
+                                <rect key="frame" x="16" y="468" width="361" height="102"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="fk1-di-L7y" secondAttribute="height" multiplier="361:21" constant="-1392.4285714285713" id="0f7-pQ-qMs"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="routes" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ac6-Sa-Nlz">
+                                <rect key="frame" x="16" y="578" width="361" height="97"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="ac6-Sa-Nlz" secondAttribute="height" multiplier="361:21" constant="-1306.4761904761904" id="MU7-Iv-wCp"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="Urh-xO-v42"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="ac6-Sa-Nlz" firstAttribute="top" secondItem="fk1-di-L7y" secondAttribute="bottom" constant="8" symbolic="YES" id="1uO-Ng-Aq3"/>
+                            <constraint firstItem="ac6-Sa-Nlz" firstAttribute="leading" secondItem="Urh-xO-v42" secondAttribute="leading" constant="16" id="8wP-mR-DXq"/>
+                            <constraint firstItem="Urh-xO-v42" firstAttribute="trailing" secondItem="ac6-Sa-Nlz" secondAttribute="trailing" constant="16" id="9v6-h8-UQl"/>
+                            <constraint firstItem="NWg-sU-FNx" firstAttribute="trailing" secondItem="Urh-xO-v42" secondAttribute="trailing" id="EPc-08-b9Q"/>
+                            <constraint firstItem="NWg-sU-FNx" firstAttribute="leading" secondItem="Urh-xO-v42" secondAttribute="leading" id="bSa-Vl-ReN"/>
+                            <constraint firstItem="fk1-di-L7y" firstAttribute="top" secondItem="NWg-sU-FNx" secondAttribute="bottom" constant="38" id="gWf-Hx-dZI"/>
+                            <constraint firstItem="NWg-sU-FNx" firstAttribute="top" secondItem="Urh-xO-v42" secondAttribute="top" id="jHb-l9-uSd"/>
+                            <constraint firstItem="fk1-di-L7y" firstAttribute="leading" secondItem="Urh-xO-v42" secondAttribute="leading" constant="16" id="qRn-W5-6WJ"/>
+                            <constraint firstItem="Urh-xO-v42" firstAttribute="trailing" secondItem="fk1-di-L7y" secondAttribute="trailing" constant="16" id="vot-Ek-itG"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="vVT-5W-aPi"/>
+                    <connections>
+                        <outlet property="mapView" destination="NWg-sU-FNx" id="jVG-jT-CCB"/>
+                        <outlet property="nameLabel" destination="fk1-di-L7y" id="EKb-nf-W1H"/>
+                        <outlet property="routesLabel" destination="ac6-Sa-Nlz" id="BMM-Bx-lXu"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dZZ-iQ-F6K" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1865" y="4"/>
+            <point key="canvasLocation" x="1864.885496183206" y="3.5211267605633805"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="6OZ-WF-LzR">

@@ -6,24 +6,33 @@
 //
 
 import UIKit
+import MapKit
+import CoreLocation
 
-class DetailViewController: UIViewController {
+class DetailViewController: UIViewController, CLLocationManagerDelegate {
+    @IBOutlet weak var mapView: MKMapView!
+    @IBOutlet weak var nameLabel: UILabel!
+    @IBOutlet weak var routesLabel: UILabel!
+    
+    let locationManager = CLLocationManager()
+    var selectedAnnotation = MKPointAnnotation()
 
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        mapView.addAnnotation(selectedAnnotation)
+        locationManager.delegate = self
+        locationManager.startUpdatingLocation()
+        nameLabel.text = "Stop: \(selectedAnnotation.title!)"
+        routesLabel.text = selectedAnnotation.subtitle
     }
     
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    //locationManager Delegate functions
+    
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        self.mapView.showAnnotations(mapView.annotations, animated: true)
+        locationManager.stopUpdatingLocation()
     }
-    */
 
 }
