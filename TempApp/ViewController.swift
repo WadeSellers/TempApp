@@ -9,7 +9,7 @@ import UIKit
 import CoreLocation
 import MapKit
 
-class ViewController: UIViewController, CLLocationManagerDelegate {
+class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate {
     @IBOutlet weak var mapView: MKMapView!
     let locationManager = CLLocationManager()
     
@@ -22,6 +22,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         locationManager.requestWhenInUseAuthorization()
         locationManager.startUpdatingLocation()
         locationManager.delegate = self
+        mapView.delegate = self
         
         let query = "\(address)\(apiKey)\(region)"
         DispatchQueue.global(qos: .userInitiated).async {
@@ -37,7 +38,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         }
     }
     
-    //mapView delegate functions
+    //locationManager delegate functions
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         let currentLocation = locations.first!
         let center = currentLocation.coordinate
@@ -68,6 +69,12 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
             alert.addAction(UIAlertAction(title: "OK", style: .default))
             self.present(alert, animated: true)
         }
+    }
+    
+    //mapView Delegate functions
+    
+    func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
+        performSegue(withIdentifier: "SegueToDetailVC", sender: nil)
     }
 
 
