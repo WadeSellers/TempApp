@@ -48,12 +48,16 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     
     func parse(json: JSON) {
         for result in json["Stops"].arrayValue {
+            let name = result["Name"].stringValue
+            let routes = result["Routes"].arrayValue
             let latitude = result["Lat"].doubleValue
             let longitude = result["Lon"].doubleValue
             let location = CLLocationCoordinate2D(latitude:latitude, longitude: longitude)
-            
             let annotation = MKPointAnnotation()
             annotation.coordinate = location
+            annotation.title = name
+            annotation.subtitle = "Routes: \(routes)"
+            print(routes)
             mapView.addAnnotation(annotation)
         }
     }
